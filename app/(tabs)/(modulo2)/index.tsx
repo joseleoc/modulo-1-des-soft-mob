@@ -1,15 +1,28 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useState } from "react";
-import { StyleSheet } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { useEffect, useState } from "react";
+import { StyleSheet, ScrollView } from "react-native";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { DefaultProducts } from "@/constants/Products";
 
 export default function Modulo2Screen() {
-  const [products, setProducts] = useState(DefaultProducts);
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    console.log("Pidiendo productos");
+    setProducts(DefaultProducts);
+
+    return () => {
+      console.log("Destruyendo componente de lista de productos");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("Productos seteados correctamente: ", products);
+  }, [products]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -17,6 +30,7 @@ export default function Modulo2Screen() {
         <ThemedView style={styles.productsList}>
           {products.map((product) => (
             <Link
+              key={product.id}
               href={{
                 pathname: "/details/[id]",
                 params: { id: product.id },
