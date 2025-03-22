@@ -31,7 +31,7 @@ export default function HomeScreen() {
         <ThemedText>Desarrollo de software móvil</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step Nombre del estudiante</ThemedText>
+        <ThemedText type="subtitle">Nombre del estudiante</ThemedText>
         <ThemedText>José Leoanrdo Contreras Vargas</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   reactLogo: {
     height: 180,
-    width: 290,
+    width: 600,
     margin: 16,
     position: "absolute",
   },
